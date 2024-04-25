@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 
 
 export default function TextForms(props) {
-    const [text, setText] = useState('enter text here');
+    const [text, setText] = useState('');
     console.log(useState("enter text here"));
     const handleUpClick = ()=>{
    
@@ -18,6 +18,10 @@ export default function TextForms(props) {
         let newText = text.toLowerCase();
         setText(newText);
     }
+    const handleclearClick =()=>{
+      let newText = ''
+      setText(newText);
+  }
     const handleCpClick =()=>{
         let newText = text.charAt(0).toUpperCase().split(". ")+text.slice(1);
         setText(newText);
@@ -38,6 +42,9 @@ export default function TextForms(props) {
 </button>
 <button className="btn btn-primary mx-2" onClick={handleCpClick}>
    convert to capitalize
+</button>
+<button className="btn btn-danger mx-2" onClick={handleclearClick}>
+   Clear Text
 </button>
 </div>
 <div className="container my-3">
