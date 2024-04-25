@@ -22,6 +22,19 @@ export default function TextForms(props) {
       let newText = ''
       setText(newText);
   }
+  const handleCopy =()=>{
+    let newText = text;
+    navigator.clipboard.writeText(newText);
+    if(navigator.clipboard.writeText(newText)){
+      alert('copied to clipboard');
+    }
+  }
+  const handleFirstLetter =()=>{
+    let newText =  text.split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+    setText(newText);
+  }
     const handleCpClick =()=>{
         let newText = text.charAt(0).toUpperCase().split(". ")+text.slice(1);
         setText(newText);
@@ -40,6 +53,10 @@ export default function TextForms(props) {
 <button className="btn btn-primary mx-2" onClick={handleLoClick}>
    convert to lowercase
 </button>
+<button className="btn btn-primary mx-2" onClick={handleCopy}>
+    copy text
+</button>
+<button className="btn btn-primary mx-2" onClick={handleFirstLetter}>first letter capitalize</button>
 <button className="btn btn-primary mx-2" onClick={handleCpClick}>
    convert to capitalize
 </button>
