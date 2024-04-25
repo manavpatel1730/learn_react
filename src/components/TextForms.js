@@ -36,9 +36,15 @@ export default function TextForms(props) {
     setText(newText);
   }
     const handleCpClick =()=>{
-        let newText = text.charAt(0).toUpperCase().split(". ")+text.slice(1);
+        let newText = text.charAt(0).toUpperCase()+text.slice(1);
         setText(newText);
     }
+const handlespeakmessage =()=>{
+  let msg = new SpeechSynthesisUtterance();
+  msg.text = text;
+  window.speechSynthesis.speak(msg);
+}
+
   return (
     <>
 <div className="container">
@@ -59,6 +65,9 @@ export default function TextForms(props) {
 <button className="btn btn-primary mx-2" onClick={handleFirstLetter}>first letter capitalize</button>
 <button className="btn btn-primary mx-2" onClick={handleCpClick}>
    convert to capitalize
+</button>
+<button className="btn btn-secondary mx-2" onClick={handlespeakmessage}>
+   speak message
 </button>
 <button className="btn btn-danger mx-2" onClick={handleclearClick}>
    Clear Text

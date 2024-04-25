@@ -1,8 +1,11 @@
-// import logo from './logo.svg';
+
 import './App.css';
+import AboutTextUtiles from './components/AboutTextUtiles';
+
 import Navbar from './components/Navbar';
 // import PracticeForLowerCase from './components/PracticeForLowerCase';
 import TextForms from './components/TextForms';
+
 
 
 function App() {
@@ -12,6 +15,7 @@ function App() {
 {/* <Navbar /> */}
 <div className="container my-3">
 <TextForms heading="Enter your text"/>
+<AboutTextUtiles/>
 
 {/* <PracticeForLowerCase heading="practice"/> */}
 </div>
