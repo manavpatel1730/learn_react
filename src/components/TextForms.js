@@ -22,6 +22,10 @@ export default function TextForms(props) {
       let newText = ''
       setText(newText);
   }
+  const handleextraspaceClick =()=>{
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  }
   const handleCopy =()=>{
     let newText = text;
     navigator.clipboard.writeText(newText);
@@ -50,21 +54,24 @@ const handlespeakmessage =()=>{
 <div className="container">
 
 <div className="mb-3">
-  <label htmlFor="textArea" className="form-label">{props.heading} </label>
-  <textarea className="form-control" value={text} id="textArea" rows="8" onChange={handleOnChange}></textarea>
+  <h1 htmlFor="textArea" className={`form-label text-${props.mode === 'dark' ? 'light' : 'dark'}`}>{props.heading} </h1>
+  <textarea className="form-control" value={text} style={{backgroundColor : props.mode === 'dark' ? 'grey' : 'white',color:props.mode === 'dark' ? 'white' : 'black'}} id="textArea" rows="8" onChange={handleOnChange}></textarea>
 </div>
 <button className="btn btn-primary mx-2" onClick={handleUpClick}>
-   convert to Uppercase
+to Uppercase
 </button>
 <button className="btn btn-primary mx-2" onClick={handleLoClick}>
-   convert to lowercase
+ to lowercase
 </button>
 <button className="btn btn-primary mx-2" onClick={handleCopy}>
     copy text
 </button>
 <button className="btn btn-primary mx-2" onClick={handleFirstLetter}>first letter capitalize</button>
 <button className="btn btn-primary mx-2" onClick={handleCpClick}>
-   convert to capitalize
+   to capitalize
+</button>
+<button className="btn btn-primary mx-2" onClick={handleextraspaceClick}>
+   remove extra space
 </button>
 <button className="btn btn-secondary mx-2" onClick={handlespeakmessage}>
    speak message
@@ -73,15 +80,15 @@ const handlespeakmessage =()=>{
    Clear Text
 </button>
 </div>
-<div className="container my-3">
+<div className={`container my-3 text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
 <h1>your text summary</h1>
 <p>{text.split(" ").length} words and {text.length} characters</p> 
 <p>{0.008 * text.split(" ").length} Minutes to read this paragraph</p> 
 
 <h2 className='container'>Preview</h2>
-<div className="card">
+<div className="card bg-dark text-light">
   <div className="card-body">
-<p>{text}</p>
+<p>{text.length>0 ? text : "enter something in the textbox above to preview here" }</p>
 </div>
 </div>
 

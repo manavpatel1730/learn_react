@@ -1,4 +1,6 @@
 
+
+import { useState } from 'react';
 import './App.css';
 import AboutTextUtiles from './components/AboutTextUtiles';
 
@@ -9,12 +11,25 @@ import TextForms from './components/TextForms';
 
 
 function App() {
+const [mode, setMode] = useState('dark');
+const toggleMode =()=>{
+  if(mode === 'dark'){
+      setMode('light')
+      document.body.style.backgroundColor = 'white'
+    
+  }
+  else{
+      setMode('dark')
+      document.body.style.backgroundColor = 'grey'
+     
+  }
+}
   return (
     <>
-<Navbar title="TextUtiles" about="about TextUtiles"/>
+<Navbar title="TextUtiles" mode={mode} about="about TextUtiles" toggleMode={toggleMode}/>
 {/* <Navbar /> */}
 <div className="container my-3">
-<TextForms heading="Enter your text"/>
+<TextForms heading="Enter your text" mode={mode} />
 <AboutTextUtiles/>
 
 {/* <PracticeForLowerCase heading="practice"/> */}

@@ -3,26 +3,24 @@ import React, { useState } from 'react'
 export default function AboutTextUtiles() {
    
     const [bgdark, setBgDark] = useState(  {
-        color: 'white',
-        backgroundColor: 'black',
-        border: '1px solid white'
-    });
-   const [btntext, setBtnText] = useState("enable light mode")
-  let  toggleStyle = ()=>{
-    if(bgdark.color === 'white'){
-      setBgDark({
         color: 'black',
         backgroundColor: 'white',
         border: '1px solid black'
-      
-   
+    });
+   const [btntext, setBtnText] = useState("enable light mode")
+  let  toggleStyle = ()=>{
+    if(bgdark.color === 'black'){
+
+      setBgDark({
+        color: 'white',
+        backgroundColor: 'black',
       })
         setBtnText("enable dark mode")
     }else{
       setBgDark({
-        color: 'white',
-        backgroundColor: 'black',
-        border: '1px solid white'
+        color: 'black',
+        backgroundColor: 'white',
+        border: '1px solid black'
       })
       setBtnText("enable light mode")
     }
