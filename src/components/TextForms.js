@@ -9,6 +9,7 @@ export default function TextForms(props) {
    
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("converted to uppercase", "success")
     }
     const handleOnChange = (event)=>{
 
@@ -55,7 +56,7 @@ const handlespeakmessage =()=>{
 
 <div className="mb-3">
   <h1 htmlFor="textArea" className={`form-label text-${props.mode === 'dark' ? 'light' : 'dark'}`}>{props.heading} </h1>
-  <textarea className="form-control" value={text} style={{backgroundColor : props.mode === 'dark' ? 'grey' : 'white',color:props.mode === 'dark' ? 'white' : 'black'}} id="textArea" rows="8" onChange={handleOnChange}></textarea>
+  <textarea className="form-control" value={text} style={{backgroundColor : props.mode === 'light' ? 'grey' : 'black',color:props.mode === 'light' ? 'black' : 'white'}} id="textArea" rows="8" onChange={handleOnChange}></textarea>
 </div>
 <button className="btn btn-primary mx-2" onClick={handleUpClick}>
 to Uppercase
