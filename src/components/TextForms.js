@@ -18,6 +18,7 @@ export default function TextForms(props) {
     const handleLoClick =()=>{
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("converted to lowercase", "success")
     }
     const handleclearClick =()=>{
       let newText = ''
@@ -26,12 +27,13 @@ export default function TextForms(props) {
   const handleextraspaceClick =()=>{
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("extra spaces are removed successfully", "success")
   }
   const handleCopy =()=>{
     let newText = text;
     navigator.clipboard.writeText(newText);
     if(navigator.clipboard.writeText(newText)){
-      alert('copied to clipboard');
+      props.showAlert("text copied to clipboard", "success")
     }
   }
   const handleFirstLetter =()=>{
@@ -39,15 +41,18 @@ export default function TextForms(props) {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
     setText(newText);
+    props.showAlert("first letter capitalized", "success")
   }
     const handleCpClick =()=>{
         let newText = text.charAt(0).toUpperCase()+text.slice(1);
         setText(newText);
+        props.showAlert("converted to capitalize", "success")
     }
 const handlespeakmessage =()=>{
   let msg = new SpeechSynthesisUtterance();
   msg.text = text;
   window.speechSynthesis.speak(msg);
+
 }
 
   return (
@@ -58,26 +63,26 @@ const handlespeakmessage =()=>{
   <h1 htmlFor="textArea" className={`form-label text-${props.mode === 'dark' ? 'light' : 'dark'}`}>{props.heading} </h1>
   <textarea className="form-control" value={text} style={{backgroundColor : props.mode === 'light' ? 'grey' : 'black',color:props.mode === 'light' ? 'black' : 'white'}} id="textArea" rows="8" onChange={handleOnChange}></textarea>
 </div>
-<button className="btn btn-primary mx-2" onClick={handleUpClick}>
+<button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>
 to Uppercase
 </button>
-<button className="btn btn-primary mx-2" onClick={handleLoClick}>
+<button className="btn btn-primary mx-2 my-2"  onClick={handleLoClick}>
  to lowercase
 </button>
-<button className="btn btn-primary mx-2" onClick={handleCopy}>
+<button className="btn btn-primary mx-2 my-2" onClick={handleCopy}>
     copy text
 </button>
-<button className="btn btn-primary mx-2" onClick={handleFirstLetter}>first letter capitalize</button>
-<button className="btn btn-primary mx-2" onClick={handleCpClick}>
+<button className="btn btn-primary mx-2 my-2" onClick={handleFirstLetter}>first letter capitalize</button>
+<button className="btn btn-primary mx-2 my-2" onClick={handleCpClick}>
    to capitalize
 </button>
-<button className="btn btn-primary mx-2" onClick={handleextraspaceClick}>
+<button className="btn btn-primary mx-2 my-2" onClick={handleextraspaceClick}>
    remove extra space
 </button>
-<button className="btn btn-secondary mx-2" onClick={handlespeakmessage}>
+<button className="btn btn-secondary mx-2 my-2" onClick={handlespeakmessage}>
    speak message
 </button>
-<button className="btn btn-danger mx-2" onClick={handleclearClick}>
+<button className="btn btn-danger mx-2 my-2" onClick={handleclearClick}>
    Clear Text
 </button>
 </div>
