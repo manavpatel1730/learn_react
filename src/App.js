@@ -65,7 +65,7 @@ const toggleMode =()=>{
   return (
     <>
     <Router>
-<Navbar title="TextUtiles" mode={mode}   about="about TextUtiles"  toggleMode={toggleMode}/>
+<Navbar title="Manav Patel" mode={mode}   about="About Me"  toggleMode={toggleMode}/>
 <Alert alert={alert} />
 {/* <Navbar /> */}
 <div className="container my-3">
@@ -76,8 +76,8 @@ const toggleMode =()=>{
 
 </Routes> */}
    <Routes>
-        <Route path="/about" element={<AboutTextUtiles />} />
-        <Route path="/" element={<TextForms />} mode={mode}   showAlert={showAlert}/>
+        <Route exact path="/about" element={<AboutTextUtiles  setMode={setMode}  toggleMode={toggleMode} />} />
+        <Route exact path="/" element={<TextForms mode={mode}   showAlert={showAlert}  />}  />
       </Routes>
 
 {/* <Route  path="/about">
