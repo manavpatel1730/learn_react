@@ -65,7 +65,7 @@ const toggleMode =()=>{
   return (
     <>
     <Router>
-<Navbar title="Manav Patel" mode={mode}   about="About Me"  toggleMode={toggleMode}/>
+<Navbar title="textUtiles" mode={mode}   about="About Me"  toggleMode={toggleMode}/>
 <Alert alert={alert} />
 {/* <Navbar /> */}
 <div className="container my-3">
